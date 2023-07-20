@@ -1,0 +1,17 @@
+{
+    "name": "pdy/tianfu",
+    "autoload": {
+        "psr-4": {
+            "Pdy\\Tianfu\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pdy",
+            "email": "294963672@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0"
+    }
+}
