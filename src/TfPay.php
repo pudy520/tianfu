@@ -3,6 +3,8 @@
 
 namespace Pdy\Tianfu;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class TfPay
 {
     use Common;
@@ -189,5 +191,24 @@ class TfPay
         $string = str_replace('https=', 'https:', $string);
         $string = str_replace('http=', 'http:', $string);
         return md5($string);
+    }
+
+    /**
+     * 验证签名
+     * @param null $data
+     * @param bool $refund
+     * @return Collection
+     */
+    public function verify($data = null, bool $refund = false): bool
+    {
+        if (is_null($data)) {
+            $request = Request::createFromGlobals();
+
+            $data = $request->request->count() > 0 ? $request->request->all() : $request->query->all();
+        }
+        if (md5(self::getSignContent($data) . $this->config['key']) === $data['sign']) {
+            return true;
+        }
+        return false;
     }
 }
