@@ -196,10 +196,9 @@ class TfPay
     /**
      * 验证签名
      * @param null $data
-     * @param bool $refund
-     * @return Collection
+     * @return bool
      */
-    public function verify($data = null, bool $refund = false): bool
+    public function verify($data = null)
     {
         if (is_null($data)) {
             $request = Request::createFromGlobals();
