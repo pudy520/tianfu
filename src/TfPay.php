@@ -181,7 +181,7 @@ class TfPay
     }
 
     /**
-     * 二次签名
+     * 二次签名779
      * @param array $arr
      * @return string
      */
